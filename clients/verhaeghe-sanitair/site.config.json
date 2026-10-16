@@ -1,0 +1,27 @@
+{
+  "slug": "verhaeghe-sanitair",
+  "name": "Verhaeghe Sanitair",
+  "brandSub": "Loodgieter · Aalst en omgeving",
+  "variant": "vakman",
+  "languages": ["nl"],
+  "sections": ["services", "about", "reviews", "hours"],
+  "contact": {
+    "phone": "053 00 90 12",
+    "whatsapp": "0470 00 90 12",
+    "email": "sanitair@example.com",
+    "address": { "street": "Industrielaan 7", "postcode": "9300", "city": "Aalst" }
+  },
+  "legal": { "companyName": "Verhaeghe Sanitair BV", "kbo": "0000.000.000", "vat": "BE 0000.000.000" },
+  "hours": [
+    [["07:30", "17:00"]],
+    [["07:30", "17:00"]],
+    [["07:30", "17:00"]],
+    [["07:30", "17:00"]],
+    [["07:30", "16:00"]],
+    [],
+    []
+  ],
+  "rating": { "score": 4.7, "count": 143, "source": "Google" },
+  "forms": { "web3formsKey": "" },
+  "photos": {}
+}

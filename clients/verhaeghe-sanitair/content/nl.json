@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "title": "Verhaeghe Sanitair – loodgieter in Aalst",
+    "description": "Lekken, verstoppingen, nieuwe badkamers en verwarmingsonderhoud in Aalst en omgeving. Bij dringende lekken staan we dezelfde dag bij je."
+  },
+  "hero": {
+    "eyebrow": "Loodgieter in Aalst, Erembodegem, Denderleeuw en Lede",
+    "title": "Lek? *Vandaag* nog opgelost.",
+    "subtitle": "Van een druppende kraan tot een volledig nieuwe badkamer. We komen langs, zeggen eerlijk wat het kost en ruimen achteraf op.",
+    "cta": "Offerte aanvragen",
+    "points": ["Gratis offerte", "Vaste prijs vooraf", "Erkend installateur"],
+    "photoAlt": "Loodgieter aan het werk"
+  },
+  "services": {
+    "title": "Waarvoor je ons belt",
+    "items": [
+      { "name": "Lekken en verstoppingen", "description": "Dringende interventie dezelfde werkdag in een straal van 15 km rond Aalst." },
+      { "name": "Badkamerrenovatie", "description": "Ontwerp, afbraak, tegels en sanitair. Eén aanspreekpunt van begin tot eind." },
+      { "name": "Verwarmingsonderhoud", "price": "€ 135", "description": "Jaarlijks onderhoud van je gasketel, met attest." },
+      { "name": "Boilers en waterverzachters", "description": "Plaatsing, vervanging en onderhoud." },
+      { "name": "Regenwaterpompen", "description": "Herstelling en plaatsing van pompen en filters." },
+      { "name": "Keuring en attesten", "description": "Voor verkoop, verhuur of premieaanvragen." }
+    ],
+    "note": "Prijzen inclusief 6% btw voor woningen ouder dan 10 jaar."
+  },
+  "about": {
+    "title": "Een vakman uit de buurt",
+    "body": [
+      "Pieter Verhaeghe is al meer dan vijftien jaar loodgieter in de Denderstreek. Je krijgt hem zelf aan de lijn, geen callcenter.",
+      "We werken netjes, komen op het afgesproken uur en geven je vooraf een vaste prijs. Geen verrassingen op de factuur."
+    ],
+    "facts": [
+      { "value": "15+", "label": "jaar ervaring" },
+      { "value": "1.800", "label": "interventies per jaar" },
+      { "value": "15 km", "label": "rond Aalst, dezelfde dag" }
+    ],
+    "photoAlt": "De bestelwagen"
+  },
+  "reviews": {
+    "title": "Klanten over ons",
+    "items": [
+      { "name": "Annick R.", "stars": 5, "text": "Zaterdagochtend een lek onder de gootsteen, binnen het uur stond Pieter hier. Super service." },
+      { "name": "Kevin D.", "stars": 5, "text": "Volledige badkamer laten doen. Op tijd klaar en precies de prijs van de offerte." },
+      { "name": "Gert S.", "stars": 4, "text": "Vakkundig en vriendelijk. Afspraak duurde wel een week, maar het werk was perfect." }
+    ]
+  },
+  "contact": {
+    "title": "Offerte of interventie",
+    "intro": "Beschrijf kort het probleem, of stuur een foto via WhatsApp. Je krijgt binnen één werkdag een antwoord.",
+    "formTitle": "Vraag een offerte aan",
+    "hoursNote": "Dringend lek buiten de kantooruren? Bel ons, we nemen op tot 22u."
+  }
+}

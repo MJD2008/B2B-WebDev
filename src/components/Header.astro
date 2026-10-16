@@ -1,0 +1,33 @@
+---
+import { site, languages, href, telHref } from '../lib/site.js';
+import { ui } from '../lib/ui.js';
+const { lang, page = '' } = Astro.props;
+const t = ui[lang];
+const s = site.sections;
+const home = href('', lang);
+const nav = [
+  s.includes('services') && ['#aanbod', t.services],
+  s.includes('about') && ['#over', t.about],
+  s.includes('hours') && ['#uren', t.hours],
+  ['#contact', t.contact],
+].filter(Boolean);
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={home}>
+      <span class="brand-name">{site.name}</span>
+      {site.brandSub && <span class="brand-sub">{site.brandSub[lang] ?? site.brandSub}</span>}
+    </a>
+    <nav class="nav" aria-label="Menu">
+      {nav.map(([h, l]) => <a href={page ? home + h : h}>{l}</a>)}
+    </nav>
+    <div class="header-actions">
+      {languages.length > 1 && (
+        <div class="langs">
+          {languages.map(l => <a href={href(page, l)} aria-current={l === lang ? 'true' : undefined} lang={l}>{l.toUpperCase()}</a>)}
+        </div>
+      )}
+      <a class="btn btn-small" href={telHref(site.contact.phone)}>{site.contact.phone}</a>
+    </div>
+  </div>
+</header>

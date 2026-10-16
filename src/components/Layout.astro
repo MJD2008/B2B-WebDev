@@ -1,0 +1,32 @@
+---
+import { site, PREVIEW, languages, href } from '../lib/site.js';
+import { variants, fontUrl } from '../lib/variants.js';
+import { ui } from '../lib/ui.js';
+import '../styles/site.css';
+
+const { lang, title, description, page = '' } = Astro.props;
+const v = variants[site.variant] ?? variants.ambacht;
+const colors = { ...v.colors, ...(site.colors ?? {}) };
+const fonts = { ...v.fonts, ...(site.fonts ?? {}) };
+const vars = Object.entries(colors).map(([k, val]) => `--c-${k}:${val}`).join(';')
+  + `;--f-display:'${fonts.display}', Georgia, serif;--f-body:'${fonts.body}', system-ui, sans-serif`;
+const t = ui[lang];
+---
+<!doctype html>
+<html lang={lang} data-variant={site.variant}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content={colors.primary} />
+  {languages.length > 1 && languages.map(l => <link rel="alternate" hreflang={l} href={href(page, l)} />)}
+  <link rel="preconnect" href={PREVIEW ? 'https://fonts.gstatic.com' : 'https://fonts.bunny.net'} crossorigin />
+  <link rel="stylesheet" href={fontUrl(fonts, PREVIEW)} />
+  <style set:html={`:root{${vars}}`}></style>
+</head>
+<body>
+  {PREVIEW && <div class="demo-banner">{t.demoBanner}</div>}
+  <slot />
+</body>
+</html>

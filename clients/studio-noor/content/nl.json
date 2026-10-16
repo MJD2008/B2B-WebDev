@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "title": "Studio Noor – kapsalon in Gent",
+    "description": "Knippen, kleuren en balayage in een rustig salon vlak bij het Sint-Pietersplein in Gent. Op afspraak, ook op donderdagavond."
+  },
+  "hero": {
+    "eyebrow": "Kapsalon · Gent",
+    "title": "Haar dat bij je past.",
+    "subtitle": "Een rustig salon vlak bij het Sint-Pietersplein. We nemen de tijd voor een goed gesprek voor we de schaar bovenhalen.",
+    "cta": "Afspraak maken",
+    "photoAlt": "Het salon"
+  },
+  "services": {
+    "title": "Prijzen",
+    "intro": "Richtprijzen voor middellang haar. Lang of erg dik haar kan iets meer kosten; we zeggen het altijd op voorhand.",
+    "items": [
+      { "name": "Knippen dames", "price": "€ 48", "description": "Wassen, knippen en brushen." },
+      { "name": "Knippen heren", "price": "€ 32", "description": "Inclusief wassen en styling." },
+      { "name": "Kinderen tot 12 jaar", "price": "€ 22" },
+      { "name": "Kleuren", "price": "vanaf € 62", "description": "Uitgroei of volledige kleur, met plantaardige verf." },
+      { "name": "Balayage", "price": "vanaf € 135", "description": "Inclusief toner, knippen en brushen." },
+      { "name": "Bruidskapsel", "price": "op aanvraag", "description": "Proefkapsel inbegrepen." }
+    ]
+  },
+  "about": {
+    "title": "Klein salon, veel aandacht",
+    "body": [
+      "Studio Noor is een salon met twee stoelen. Dat is bewust: zo heb je nooit het gevoel dat je aan de lopende band zit.",
+      "We werken met verzorgende producten van Belgische merken en geven je graag tips om je kapsel thuis zelf in vorm te houden."
+    ],
+    "facts": [
+      { "value": "2", "label": "stoelen, nooit drukte" },
+      { "value": "do", "label": "open tot 20u" }
+    ],
+    "photoAlt": "Kapster aan het werk"
+  },
+  "gallery": {
+    "title": "Recent werk",
+    "items": [
+      { "caption": "Balayage" },
+      { "caption": "Bob" },
+      { "caption": "Krullen" },
+      { "caption": "Het salon" },
+      { "caption": "Herensnit" },
+      { "caption": "Bruidskapsel" }
+    ]
+  },
+  "reviews": {
+    "title": "Wat klanten zeggen",
+    "items": [
+      { "name": "Lotte M.", "stars": 5, "text": "Eindelijk een kapper die echt luistert. Mijn balayage is precies wat ik wou." },
+      { "name": "Yasmine K.", "stars": 5, "text": "Heerlijk rustig salon, geen haast. Ik kom al drie jaar en ga nergens anders meer heen." },
+      { "name": "Thomas P.", "stars": 5, "text": "Snel binnen op donderdagavond na het werk. Top snit voor een eerlijke prijs." }
+    ]
+  },
+  "contact": {
+    "title": "Afspraak maken",
+    "intro": "Stuur ons een bericht of WhatsApp met wat je wil laten doen. We stellen een moment voor dat jou past.",
+    "formTitle": "Vraag een afspraak aan",
+    "hoursNote": "Enkel op afspraak."
+  }
+}

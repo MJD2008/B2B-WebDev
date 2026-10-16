@@ -1,0 +1,28 @@
+{
+  "slug": "bakkerij-lieven",
+  "name": "Bakkerij Lieven",
+  "brandSub": { "nl": "Ambachtelijke bakker · Lokeren", "fr": "Boulanger artisanal · Lokeren" },
+  "variant": "ambacht",
+  "languages": ["nl", "fr"],
+  "sections": ["services", "about", "gallery", "reviews", "hours"],
+  "contact": {
+    "phone": "09 000 12 34",
+    "whatsapp": "0470 00 12 34",
+    "email": "bakkerij@example.com",
+    "address": { "street": "Kerkstraat 12", "postcode": "9160", "city": "Lokeren" }
+  },
+  "legal": { "companyName": "Bakkerij Lieven BV", "kbo": "0000.000.000", "vat": "BE 0000.000.000" },
+  "hours": [
+    [],
+    [["06:30", "18:00"]],
+    [["06:30", "18:00"]],
+    [["06:30", "18:00"]],
+    [["06:30", "18:00"]],
+    [["06:30", "17:00"]],
+    [["06:30", "12:30"]]
+  ],
+  "rating": { "score": 4.8, "count": 212, "source": "Google" },
+  "forms": { "web3formsKey": "" },
+  "social": { "facebook": "https://facebook.com/", "instagram": "https://instagram.com/" },
+  "photos": {}
+}

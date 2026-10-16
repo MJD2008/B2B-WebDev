@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Bakkerij Lieven – boulanger artisanal à Lokeren",
+    "description": "Pain au levain, viennoiseries et tartes de notre propre boulangerie au centre de Lokeren. Commandez votre tarte à l'avance."
+  },
+  "hero": {
+    "eyebrow": "À Lokeren depuis 1987",
+    "title": "Frais chaque matin, comme il se doit.",
+    "subtitle": "Pain au levain, viennoiseries et tartes de notre boulangerie dans la Kerkstraat. Tout est chaud en vitrine dès 6h30.",
+    "cta": "Commander une tarte",
+    "photoAlt": "Le comptoir avec du pain frais"
+  },
+  "services": {
+    "title": "Sorti du four",
+    "intro": "Un aperçu de notre offre quotidienne. Commandez tartes et plateaux de sandwichs deux jours à l'avance.",
+    "items": [
+      { "name": "Pain au levain complet", "price": "€ 4,20", "description": "48 heures de levée, croûte croustillante." },
+      { "name": "Couque au beurre", "price": "€ 1,60", "description": "Au vrai beurre, avec une pointe de cannelle." },
+      { "name": "Épeautre aux noix", "price": "€ 4,80", "description": "Noix et noisettes, se garde longtemps." },
+      { "name": "Pistolets", "price": "€ 0,60", "description": "Le dimanche et les jours fériés, chauds dès 7h." },
+      { "name": "Tarte frangipane", "price": "€ 18,50", "description": "Pour 6 personnes. Sur commande." },
+      { "name": "Plateau de sandwichs", "price": "dès € 32", "description": "Pour réunions et fêtes, à partir de 8 personnes." }
+    ],
+    "note": "Allergènes ? Demandez-nous au comptoir."
+  },
+  "about": {
+    "title": "Trois générations de boulangers",
+    "body": [
+      "La petite boulangerie de grand-père Lieven est toujours une entreprise familiale. Nous faisons tout nous-mêmes, dans l'atelier derrière le magasin.",
+      "Pas de pâte surgelée, mais du temps : notre pain au levain lève pendant deux jours."
+    ],
+    "facts": [
+      { "value": "1987", "label": "ouverture" },
+      { "value": "48h", "label": "de levée pour notre levain" },
+      { "value": "6h30", "label": "ouvert chaque matin" }
+    ],
+    "photoAlt": "Boulanger au travail"
+  },
+  "gallery": {
+    "title": "De la boulangerie",
+    "items": [
+      { "caption": "Pain au levain" },
+      { "caption": "Viennoiseries" },
+      { "caption": "Tarte frangipane" },
+      { "caption": "Le magasin" },
+      { "caption": "Plateau de sandwichs" },
+      { "caption": "Notre équipe" }
+    ]
+  },
+  "reviews": {
+    "title": "Ce que disent nos clients",
+    "items": [
+      { "name": "Sofie D.", "stars": 5, "text": "Le meilleur pain au levain de la région. Nous venons exprès chaque samedi." },
+      { "name": "Marc V.", "stars": 5, "text": "Gâteau d'anniversaire commandé, parfaitement à l'heure et tout le monde voulait la recette." },
+      { "name": "Ilse B.", "stars": 4, "text": "Service aimable et des couques vraiment beurrées. Le dimanche, il faut un peu patienter." }
+    ]
+  },
+  "contact": {
+    "title": "Passer ou commander",
+    "intro": "Besoin d'une tarte ou d'un plateau ? Laissez un message ou envoyez-nous un WhatsApp, nous confirmons le jour même.",
+    "formTitle": "Commande ou question",
+    "hoursNote": "Jours fériés : ouvert jusqu'à 12h30. Congés annuels : les deux premières semaines de juillet."
+  }
+}

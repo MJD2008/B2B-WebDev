@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Bakkerij Lieven – ambachtelijke bakker in Lokeren",
+    "description": "Elke ochtend vers desembrood, koffiekoeken en taarten uit eigen bakkerij in het centrum van Lokeren. Bestel je taart op voorhand."
+  },
+  "hero": {
+    "eyebrow": "Sinds 1987 in Lokeren",
+    "title": "Elke ochtend vers, zoals het hoort.",
+    "subtitle": "Desembrood, koffiekoeken en taarten uit onze eigen bakkerij op de Kerkstraat. Vanaf 6u30 staan ze warm in de toonbank.",
+    "cta": "Taart bestellen",
+    "photoAlt": "De toonbank met vers brood"
+  },
+  "services": {
+    "title": "Uit de oven",
+    "intro": "Een greep uit ons dagelijks aanbod. Taarten en broodjesschotels bestel je best twee dagen op voorhand.",
+    "items": [
+      { "name": "Desembrood volkoren", "price": "€ 4,20", "description": "48 uur gerezen, met een krokante korst." },
+      { "name": "Witte boterkoek", "price": "€ 1,60", "description": "Met échte boter en een vleugje kaneel." },
+      { "name": "Spelt-noten", "price": "€ 4,80", "description": "Met walnoot en hazelnoot, lang vers." },
+      { "name": "Pistolets", "price": "€ 0,60", "description": "Op zondag en feestdagen, warm om 7u." },
+      { "name": "Frangipanetaart", "price": "€ 18,50", "description": "Voor 6 personen. Op bestelling." },
+      { "name": "Broodjesschotel", "price": "vanaf € 32", "description": "Voor vergaderingen en feestjes, vanaf 8 personen." }
+    ],
+    "note": "Allergenen? Vraag het ons gerust aan de toonbank."
+  },
+  "about": {
+    "title": "Drie generaties bakkers",
+    "body": [
+      "Wat begon als het bakkerijtje van grootvader Lieven, is vandaag nog altijd een familiezaak. We bakken alles zelf, in de bakkerij achter de winkel.",
+      "Geen diepvriesdeeg, wel tijd: ons desembrood rijst twee dagen. Daarom smaakt het zoals brood vroeger smaakte."
+    ],
+    "facts": [
+      { "value": "1987", "label": "geopend" },
+      { "value": "48u", "label": "rijstijd voor ons desembrood" },
+      { "value": "6u30", "label": "elke ochtend open" }
+    ],
+    "photoAlt": "Bakker aan het werk"
+  },
+  "gallery": {
+    "title": "Uit de bakkerij",
+    "items": [
+      { "caption": "Desembrood" },
+      { "caption": "Koffiekoeken" },
+      { "caption": "Frangipanetaart" },
+      { "caption": "De winkel" },
+      { "caption": "Broodjesschotel" },
+      { "caption": "Ons team" }
+    ]
+  },
+  "reviews": {
+    "title": "Wat klanten zeggen",
+    "items": [
+      { "name": "Sofie D.", "stars": 5, "text": "Het beste desembrood van de streek. We rijden er elke zaterdag speciaal voor naar Lokeren." },
+      { "name": "Marc V.", "stars": 5, "text": "Verjaardagstaart besteld, perfect op tijd en iedereen wou het recept." },
+      { "name": "Ilse B.", "stars": 4, "text": "Vriendelijke bediening en de koffiekoeken zijn nog echt boterig. Op zondag wel even aanschuiven." }
+    ]
+  },
+  "contact": {
+    "title": "Langskomen of bestellen",
+    "intro": "Taart of broodjesschotel nodig? Laat een bericht achter of stuur ons een WhatsApp, we bevestigen dezelfde dag.",
+    "formTitle": "Bestelling of vraag",
+    "hoursNote": "Op feestdagen open tot 12u30. Jaarlijks verlof: eerste twee weken van juli."
+  }
+}

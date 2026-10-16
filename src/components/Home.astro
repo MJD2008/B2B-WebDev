@@ -1,0 +1,214 @@
+---
+import Layout from './Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Photo from './Photo.astro';
+import { site, content, PREVIEW, telHref, waHref, mapsLink } from '../lib/site.js';
+import { ui } from '../lib/ui.js';
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = content(lang);
+const s = site.sections;
+const contact = site.contact;
+const img = (name) => site.photos?.[name] ? `${PREVIEW ? '.' : ''}/${site.slug}/${site.photos[name]}` : null;
+const fmtHours = (ranges) => ranges.length ? ranges.map(r => `${r[0]} – ${r[1]}`).join(', ') : t.closed;
+const stars = (n) => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
+const mapsQ = encodeURIComponent(`${site.name}, ${contact.address.street}, ${contact.address.postcode} ${contact.address.city}`);
+---
+<Layout lang={lang} title={c.meta.title} description={c.meta.description}>
+  <Header lang={lang} />
+  <main>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          {c.hero.eyebrow && <p class="eyebrow">{c.hero.eyebrow}</p>}
+          <h1 set:html={c.hero.title.replace(/\*(.+?)\*/g, "<em>$1</em>")} />
+          <p class="lead">{c.hero.subtitle}</p>
+          <div class="hero-cta">
+            <a class="btn" href={c.hero.ctaHref ?? '#contact'}>{c.hero.cta}</a>
+            <a class="btn btn-ghost" href={telHref(contact.phone)}>{t.call} {contact.phone}</a>
+          </div>
+          {c.hero.points && (
+            <ul class="hero-points">{c.hero.points.map(p => <li>{p}</li>)}</ul>
+          )}
+        </div>
+        <div class="hero-media">
+          <Photo src={img('hero')} alt={c.hero.photoAlt} label={c.hero.photoAlt} tone={0} class="photo-hero" />
+          {site.rating && (
+            <div class="rating-badge">
+              <span class="rating-num">{site.rating.score.toLocaleString(lang + '-BE')}</span>
+              <span class="rating-stars" aria-hidden="true">{stars(site.rating.score)}</span>
+              <span class="rating-src">{site.rating.count} reviews · {site.rating.source}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    {s.includes('services') && (
+      <section class="section" id="aanbod">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>{c.services.title}</h2>
+            {c.services.intro && <p class="section-intro">{c.services.intro}</p>}
+          </div>
+          <ul class="services">
+            {c.services.items.map(i => (
+              <li class="service">
+                <div class="service-top">
+                  <h3>{i.name}</h3>
+                  {i.price && <span class="price">{i.price}</span>}
+                </div>
+                {i.description && <p>{i.description}</p>}
+              </li>
+            ))}
+          </ul>
+          {c.services.note && <p class="note">{c.services.note}</p>}
+        </div>
+      </section>
+    )}
+
+    {s.includes('about') && (
+      <section class="section section-alt" id="over">
+        <div class="wrap about">
+          <Photo src={img('about')} alt={c.about.photoAlt} label={c.about.photoAlt} tone={1} class="photo-about" />
+          <div class="about-text">
+            <h2>{c.about.title}</h2>
+            {c.about.body.map(p => <p>{p}</p>)}
+            {c.about.facts && (
+              <dl class="facts">
+                {c.about.facts.map(f => <div><dt>{f.value}</dt><dd>{f.label}</dd></div>)}
+              </dl>
+            )}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {s.includes('gallery') && (
+      <section class="section" id="fotos">
+        <div class="wrap">
+          <h2>{c.gallery.title}</h2>
+          <div class="gallery">
+            {c.gallery.items.map((g, i) => <Photo src={g.src ? img(g.src) : null} alt={g.caption} label={g.caption} tone={i + 2} />)}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {s.includes('reviews') && (
+      <section class="section section-alt" id="reviews">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>{c.reviews.title}</h2>
+            {site.rating && <p class="section-intro">{site.rating.score.toLocaleString(lang + '-BE')} / 5 {t.reviewsOn} {site.rating.source} ({site.rating.count})</p>}
+          </div>
+          <div class="reviews">
+            {c.reviews.items.map(r => (
+              <figure class="review">
+                <span class="review-stars" aria-label={`${r.stars} / 5`}>{stars(r.stars)}</span>
+                <blockquote>{r.text}</blockquote>
+                <figcaption>{r.name}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="section" id="contact">
+      <div class="wrap contact">
+        <div class="contact-info">
+          <h2>{c.contact.title}</h2>
+          {c.contact.intro && <p>{c.contact.intro}</p>}
+          <div class="contact-lines">
+            <p><strong>{site.name}</strong><br />{contact.address.street}<br />{contact.address.postcode} {contact.address.city}</p>
+            <p><a href={telHref(contact.phone)}>{contact.phone}</a><br /><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
+          </div>
+          {s.includes('hours') && (
+            <div class="hours" id="uren" data-hours={JSON.stringify(site.hours)} data-t={JSON.stringify({ open: t.openNow, closed: t.closedNow, opensAt: t.opensAt, until: t.until })}>
+              <div class="hours-head">
+                <h3>{t.hours}</h3>
+                <span class="open-state" hidden></span>
+              </div>
+              <table>
+                <tbody>
+                  {t.days.map((d, i) => (
+                    <tr data-day={i}>
+                      <th scope="row">{d}</th>
+                      <td>{fmtHours(site.hours[i] ?? [])}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {c.contact.hoursNote && <p class="note">{c.contact.hoursNote}</p>}
+            </div>
+          )}
+        </div>
+        <div class="contact-side">
+          {PREVIEW
+            ? <a class="map-card" href={mapsLink(contact)} target="_blank" rel="noopener"><span>{contact.address.city}</span>{t.openMap} →</a>
+            : <iframe class="map" title={t.route} loading="lazy" src={`https://maps.google.com/maps?q=${mapsQ}&output=embed`}></iframe>}
+          <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-preview={PREVIEW ? '1' : undefined}>
+            <h3>{c.contact.formTitle}</h3>
+            <input type="hidden" name="access_key" value={site.forms?.web3formsKey ?? ''} />
+            <input type="hidden" name="subject" value={`Nieuw bericht via website ${site.name}`} />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+            <label for="f-name">{t.name}</label>
+            <input id="f-name" name="name" required autocomplete="name" />
+            <div class="form-row">
+              <div><label for="f-email">{t.email}</label><input id="f-email" name="email" type="email" required autocomplete="email" /></div>
+              <div><label for="f-phone">{t.phone}</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" /></div>
+            </div>
+            <label for="f-msg">{t.message}</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+            <button class="btn" type="submit">{t.send}</button>
+            <p class="form-status" role="status" data-ok={t.sent} data-err={t.sendError}></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+
+  <nav class="action-bar" aria-label={t.contact}>
+    <a href={telHref(contact.phone)}>{t.call}</a>
+    {contact.whatsapp && <a href={waHref(contact.whatsapp)} target="_blank" rel="noopener">{t.whatsapp}</a>}
+    <a href={mapsLink(contact)} target="_blank" rel="noopener">{t.route}</a>
+  </nav>
+
+  <script is:inline>
+  (function () {
+    // Open/closed badge and today's row, in Belgian time.
+    var box = document.querySelector('.hours');
+    if (box) {
+      var hours = JSON.parse(box.dataset.hours), t = JSON.parse(box.dataset.t);
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Brussels', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+      var get = function (k) { return parts.find(function (p) { return p.type === k; }).value; };
+      var day = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].indexOf(get('weekday'));
+      var now = get('hour') + ':' + get('minute');
+      var today = hours[day] || [];
+      var row = box.querySelector('tr[data-day="' + day + '"]');
+      if (row) row.classList.add('today');
+      var current = today.find(function (r) { return now >= r[0] && now < r[1]; });
+      var next = today.find(function (r) { return now < r[0]; });
+      var el = box.querySelector('.open-state');
+      el.textContent = current ? t.open + ' · ' + t.until + ' ' + current[1] : t.closed + (next ? ' · ' + t.opensAt + ' ' + next[0] : '');
+      el.classList.add(current ? 'is-open' : 'is-closed');
+      el.hidden = false;
+    }
+    // Contact form: send with fetch so the visitor stays on the page.
+    var form = document.getElementById('contact-form');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = form.querySelector('.form-status');
+      if (form.dataset.preview) { status.textContent = status.dataset.ok; form.reset(); return; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { status.textContent = d.success ? status.dataset.ok : status.dataset.err; if (d.success) form.reset(); })
+        .catch(function () { status.textContent = status.dataset.err; });
+    });
+  })();
+  </script>
+</Layout>

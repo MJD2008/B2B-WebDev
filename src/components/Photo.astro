@@ -1,0 +1,8 @@
+---
+// Shows a client photo when one exists in public/<slug>/, otherwise a styled placeholder.
+// Placeholders are meant for demos only; real launches always use the client's own photos.
+const { src, alt, label, tone = 0, class: cls = '' } = Astro.props;
+---
+{src
+  ? <img class={`photo ${cls}`} src={src} alt={alt} loading="lazy" />
+  : <div class={`photo photo--ph tone-${tone % 4} ${cls}`} role="img" aria-label={alt}><span>{label}</span></div>}

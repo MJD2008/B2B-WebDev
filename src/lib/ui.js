@@ -1,0 +1,36 @@
+// Fixed interface texts per language. Client-specific texts live in clients/<slug>/content/.
+export const ui = {
+  nl: {
+    days: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
+    closed: 'Gesloten', openNow: 'Nu open', closedNow: 'Nu gesloten', opensAt: 'opent om', until: 'tot',
+    hours: 'Openingsuren', call: 'Bellen', whatsapp: 'WhatsApp', route: 'Route', contact: 'Contact',
+    services: 'Aanbod', about: 'Over ons', reviews: 'Reviews', gallery: 'Foto’s',
+    name: 'Naam', email: 'E-mail', phone: 'Telefoon', message: 'Bericht', send: 'Versturen',
+    sent: 'Bedankt! We nemen snel contact op.', sendError: 'Versturen lukte niet. Bel of mail ons gerust.',
+    privacy: 'Privacyverklaring', vat: 'BTW', kbo: 'Ondernemingsnummer', openMap: 'Open in Google Maps',
+    reviewsOn: 'gemiddeld op', photoPlaceholder: 'Foto van de zaak',
+    demoBanner: 'Voorbeeldsite van een fictieve zaak',
+  },
+  fr: {
+    days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+    closed: 'Fermé', openNow: 'Ouvert', closedNow: 'Fermé', opensAt: 'ouvre à', until: 'jusqu’à',
+    hours: 'Heures d’ouverture', call: 'Appeler', whatsapp: 'WhatsApp', route: 'Itinéraire', contact: 'Contact',
+    services: 'Notre offre', about: 'À propos', reviews: 'Avis', gallery: 'Photos',
+    name: 'Nom', email: 'E-mail', phone: 'Téléphone', message: 'Message', send: 'Envoyer',
+    sent: 'Merci ! Nous vous recontactons rapidement.', sendError: 'L’envoi a échoué. Appelez-nous ou envoyez un e-mail.',
+    privacy: 'Politique de confidentialité', vat: 'TVA', kbo: 'Numéro d’entreprise', openMap: 'Ouvrir dans Google Maps',
+    reviewsOn: 'en moyenne sur', photoPlaceholder: 'Photo du commerce',
+    demoBanner: 'Site d’exemple d’un commerce fictif',
+  },
+  en: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    closed: 'Closed', openNow: 'Open now', closedNow: 'Closed now', opensAt: 'opens at', until: 'until',
+    hours: 'Opening hours', call: 'Call', whatsapp: 'WhatsApp', route: 'Directions', contact: 'Contact',
+    services: 'What we offer', about: 'About us', reviews: 'Reviews', gallery: 'Photos',
+    name: 'Name', email: 'Email', phone: 'Phone', message: 'Message', send: 'Send',
+    sent: 'Thanks! We will get back to you soon.', sendError: 'Sending failed. Feel free to call or email us.',
+    privacy: 'Privacy policy', vat: 'VAT', kbo: 'Company number', openMap: 'Open in Google Maps',
+    reviewsOn: 'average on', photoPlaceholder: 'Photo of the shop',
+    demoBanner: 'Example site for a fictional business',
+  },
+};

@@ -1,0 +1,21 @@
+---
+import Layout from './Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { site } from '../lib/site.js';
+import { ui } from '../lib/ui.js';
+import { privacyText } from '../lib/privacy.js';
+const { lang } = Astro.props;
+const t = ui[lang];
+const blocks = privacyText(lang, site);
+---
+<Layout lang={lang} title={`${t.privacy} – ${site.name}`} description={t.privacy} page="privacy">
+  <Header lang={lang} page="privacy" />
+  <main class="section">
+    <div class="wrap prose">
+      <h1>{t.privacy}</h1>
+      {blocks.map(([h, p]) => <><h2>{h}</h2><p>{p}</p></>)}
+    </div>
+  </main>
+  <Footer lang={lang} />
+</Layout>

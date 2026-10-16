@@ -1,0 +1,28 @@
+---
+import { site, href } from '../lib/site.js';
+import { ui } from '../lib/ui.js';
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = site.contact, l = site.legal;
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-name">{site.name}</p>
+      <p>{c.address.street}<br />{c.address.postcode} {c.address.city}</p>
+    </div>
+    <div>
+      <p>{c.phone}<br />{c.email}</p>
+      {site.social && (
+        <p class="social">
+          {site.social.facebook && <a href={site.social.facebook}>Facebook</a>}
+          {site.social.instagram && <a href={site.social.instagram}>Instagram</a>}
+        </p>
+      )}
+    </div>
+    <div class="legal">
+      <p>{l.companyName}<br />{t.kbo} {l.kbo}<br />{t.vat} {l.vat}</p>
+      <p><a href={href('privacy', lang)}>{t.privacy}</a></p>
+    </div>
+  </div>
+</footer>
