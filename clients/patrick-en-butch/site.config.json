@@ -22,7 +22,11 @@
   ],
   "forms": { "web3formsKey": "" },
   "social": { "facebook": "https://www.facebook.com/bakkerijpatrick/" },
-  "photos": {},
+  "photos": {
+    "hero": "deeg-opbollen.jpg", "about": "weegschaal.jpg",
+    "fruittaart": "fruittaart.jpg", "meringue": "citroen-aardbei-meringue.jpg", "appeltaart": "appeltaart.jpg",
+    "fototaart": "fototaart.jpg", "soezen": "soezen.jpg", "toonbank": "toonbank.jpg"
+  },
   "order": {
     "slotMinutes": 30,
     "lastSlotBeforeClose": 30,
