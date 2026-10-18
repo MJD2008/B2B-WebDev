@@ -10,7 +10,7 @@
     "subtitle": "Pain frais, viennoiseries et tartes de notre propre boulangerie à Renaix. Commandez en ligne, votre commande vous attend au magasin.",
     "cta": "Commander en ligne",
     "ctaHref": "order",
-    "points": ["Tout fait maison", "Commande jusqu’à la veille au soir", "Paiement au retrait"],
+    "points": ["Tout fait maison", "Commande en ligne, retrait au magasin", "Paiement au retrait"],
     "photoAlt": "Pistolets chauds sortis du four"
   },
   "services": {
@@ -18,7 +18,7 @@
     "intro": "Un aperçu de ce qui sort chaque matin de notre four. Toute l’offre se trouve sur la page de commande.",
     "items": [
       { "name": "Pistolet cuit sur la sole", "price": "0,50 €", "description": "Cuit directement sur la pierre du four. Le dimanche, tout chauds à 7h10 et 8h10." },
-      { "name": "Bommelkies de Renaix", "description": "Le bonbon de Renaix, selon la recette originale et dans son emballage d’origine." },
+      { "name": "Bommelkies de Renaix", "description": "Une spécialité de Renaix, co-créée par Patrick en 1978. Toujours selon la recette originale et secrète, dans son emballage d’origine." },
       { "name": "Cramique aux raisins", "price": "3,00 – 5,00 €", "description": "Moelleux et plein de raisins, pour le petit-déjeuner du dimanche." },
       { "name": "Waldkorn & épeautre", "price": "dès 2,10 €", "description": "Ou choisissez parmi le complet, 10 céréales, orties, Maya et pain aux noix." },
       { "name": "Tartes & gâteaux", "description": "De la tarte au riz et du Flan Bréselienne au Tonka à l’orange sanguine. À commander au moins deux jours à l’avance." },
@@ -35,7 +35,7 @@
     "facts": [
       { "value": "1978", "label": "ouverture dans la Kruisstraat" },
       { "value": "2", "label": "générations de boulangers" },
-      { "value": "7h", "label": "ouvert chaque matin" }
+      { "value": "7h", "label": "ouvert, du mercredi au dimanche" }
     ],
     "photoAlt": "Butch au travail dans la boulangerie"
   },

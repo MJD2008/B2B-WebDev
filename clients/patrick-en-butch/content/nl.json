@@ -10,7 +10,7 @@
     "subtitle": "Vers brood, koeken en taarten uit onze eigen bakkerij in Ronse. Bestel online en je bestelling ligt klaar wanneer je ze komt halen.",
     "cta": "Online bestellen",
     "ctaHref": "order",
-    "points": ["Alles zelf gebakken", "Bestellen tot de avond voordien", "Betalen bij het afhalen"],
+    "points": ["Alles zelf gebakken", "Online bestellen, afhalen in de winkel", "Betalen bij het afhalen"],
     "photoAlt": "Warme pistolets uit de oven"
   },
   "services": {
@@ -18,7 +18,7 @@
     "intro": "Een greep uit wat elke ochtend uit onze oven komt. Het volledige aanbod vind je bij online bestellen.",
     "items": [
       { "name": "Pistolet op steen", "price": "€ 0,50", "description": "Rechtstreeks op de ovensteen gebakken. Op zondag warm uit de oven om 7u10 en 8u10." },
-      { "name": "Ronse Bommelkies", "description": "Het Ronsische snoepje, volgens het originele recept en in de originele wikkel." },
+      { "name": "Ronse Bommelkies", "description": "Een Ronsische specialiteit, in 1978 mee bedacht door Patrick. Nog altijd volgens het originele, geheime recept en in de originele wikkel." },
       { "name": "Kramiek met rozijnen", "price": "€ 3,00 – 5,00", "description": "Luchtig en vol rozijnen, voor het zondagsontbijt." },
       { "name": "Waldkorn & speltbrood", "price": "vanaf € 2,10", "description": "Of kies uit volkoren, 10-granen, brandnetel, Maya en notenbrood." },
       { "name": "Taarten", "description": "Van rijsttaart en Flan Breselienne tot Tonka met bloedsinaasappel. Bestel minstens twee dagen op voorhand." },
@@ -35,7 +35,7 @@
     "facts": [
       { "value": "1978", "label": "geopend op de Kruisstraat" },
       { "value": "2", "label": "generaties bakkers" },
-      { "value": "7u", "label": "elke ochtend open" }
+      { "value": "7u", "label": "open, woensdag tot zondag" }
     ],
     "photoAlt": "Butch aan het werk in de bakkerij"
   },
