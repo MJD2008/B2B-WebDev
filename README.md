@@ -32,6 +32,18 @@ CLIENT=bakkerij-lieven PREVIEW=1 npm run build   # self-contained copy with rela
 
 Wrap a word in `*stars*` in the hero title to highlight it (used by the vakman look).
 
+## Online orders
+
+Add an `"order"` block to `site.config.json` (see `clients/patrick-en-butch`) and the site gets a `bestellen` page:
+products with quantities, a pickup day and time based on the opening hours, and the order mailed to the shop via Web3Forms.
+Items take `price` (leave it out for "prijs in de winkel"), `unit`, `note`, `sizes` (persons, for cakes) and `leadDays`
+(days of notice, default 1). `closedDates` takes `YYYY-MM-DD` dates for holidays. Without a Web3Forms key the page runs in demo mode.
+
+## Hosting on GitHub Pages (simple demo)
+
+`CLIENT=<slug> PREVIEW=1 npm run build` gives plain HTML files with relative links. Upload the contents of `dist/<slug>/`
+to a new GitHub repository and turn on Pages (Settings → Pages → Deploy from branch → main / root).
+
 ## Hosting (Cloudflare Pages)
 
 Per client, create a Pages project connected to this repository:

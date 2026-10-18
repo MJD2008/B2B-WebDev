@@ -9,6 +9,9 @@ const config = configs[`../../clients/${CLIENT}/site.config.json`];
 if (!config) throw new Error(`No client "${CLIENT}" in clients/. Check the CLIENT env var.`);
 export const site = config;
 
+// Slug of the online-order page (clients with an "order" block only).
+export const ORDER_PAGE = 'bestellen';
+
 export const languages = config.languages ?? ['nl'];
 export const defaultLanguage = languages[0];
 

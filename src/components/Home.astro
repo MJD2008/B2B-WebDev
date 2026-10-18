@@ -3,7 +3,7 @@ import Layout from './Layout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import Photo from './Photo.astro';
-import { site, content, PREVIEW, telHref, waHref, mapsLink } from '../lib/site.js';
+import { site, content, PREVIEW, href, telHref, waHref, mapsLink, ORDER_PAGE } from '../lib/site.js';
 import { ui } from '../lib/ui.js';
 
 const { lang } = Astro.props;
@@ -14,6 +14,7 @@ const contact = site.contact;
 const img = (name) => site.photos?.[name] ? `${PREVIEW ? '.' : ''}/${site.slug}/${site.photos[name]}` : null;
 const fmtHours = (ranges) => ranges.length ? ranges.map(r => `${r[0]} – ${r[1]}`).join(', ') : t.closed;
 const stars = (n) => '★★★★★'.slice(0, Math.round(n)) + '☆☆☆☆☆'.slice(0, 5 - Math.round(n));
+const ctaHref = c.hero.ctaHref === 'order' ? href(ORDER_PAGE, lang) : (c.hero.ctaHref ?? '#contact');
 const mapsQ = encodeURIComponent(`${site.name}, ${contact.address.street}, ${contact.address.postcode} ${contact.address.city}`);
 ---
 <Layout lang={lang} title={c.meta.title} description={c.meta.description}>
@@ -26,7 +27,7 @@ const mapsQ = encodeURIComponent(`${site.name}, ${contact.address.street}, ${con
           <h1 set:html={c.hero.title.replace(/\*(.+?)\*/g, "<em>$1</em>")} />
           <p class="lead">{c.hero.subtitle}</p>
           <div class="hero-cta">
-            <a class="btn" href={c.hero.ctaHref ?? '#contact'}>{c.hero.cta}</a>
+            <a class="btn" href={ctaHref}>{c.hero.cta}</a>
             <a class="btn btn-ghost" href={telHref(contact.phone)}>{t.call} {contact.phone}</a>
           </div>
           {c.hero.points && (
@@ -82,6 +83,19 @@ const mapsQ = encodeURIComponent(`${site.name}, ${contact.address.street}, ${con
               </dl>
             )}
           </div>
+        </div>
+      </section>
+    )}
+
+    {s.includes('feature') && (
+      <section class="section feature-section">
+        <div class="wrap feature">
+          <div class="feature-text">
+            {c.feature.eyebrow && <p class="eyebrow">{c.feature.eyebrow}</p>}
+            <h2>{c.feature.title}</h2>
+            <p>{c.feature.body}</p>
+          </div>
+          {c.feature.href && <a class="btn" href={c.feature.href} target="_blank" rel="noopener">{c.feature.cta} →</a>}
         </div>
       </section>
     )}
@@ -173,6 +187,7 @@ const mapsQ = encodeURIComponent(`${site.name}, ${contact.address.street}, ${con
   <Footer lang={lang} />
 
   <nav class="action-bar" aria-label={t.contact}>
+    {site.order && <a href={href(ORDER_PAGE, lang)}>{t.order}</a>}
     <a href={telHref(contact.phone)}>{t.call}</a>
     {contact.whatsapp && <a href={waHref(contact.whatsapp)} target="_blank" rel="noopener">{t.whatsapp}</a>}
     <a href={mapsLink(contact)} target="_blank" rel="noopener">{t.route}</a>

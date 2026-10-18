@@ -1,0 +1,99 @@
+{
+  "slug": "patrick-en-butch",
+  "name": "Bakkerij Patrick & Butch",
+  "brandSub": { "nl": "Ambachtelijke bakker · Ronse", "fr": "Boulanger artisanal · Renaix" },
+  "variant": "ambacht",
+  "languages": ["nl", "fr"],
+  "sections": ["services", "about", "feature", "gallery", "hours"],
+  "contact": {
+    "phone": "055 21 42 61",
+    "email": "patisserie_patrick@hotmail.com",
+    "address": { "street": "Kruisstraat 50", "postcode": "9600", "city": "Ronse" }
+  },
+  "legal": { "companyName": "Butch Baguet", "kbo": "0746.464.785", "vat": "BE 0746.464.785" },
+  "hours": [
+    [],
+    [],
+    [["07:00", "18:00"]],
+    [["07:00", "18:00"]],
+    [["07:00", "18:00"]],
+    [["07:00", "18:00"]],
+    [["07:00", "16:00"]]
+  ],
+  "forms": { "web3formsKey": "" },
+  "social": { "facebook": "https://www.facebook.com/bakkerijpatrick/" },
+  "photos": {
+    "hero": "deeg-opbollen.jpg", "about": "weegschaal.jpg",
+    "fruittaart": "fruittaart.jpg", "meringue": "citroen-aardbei-meringue.jpg", "appeltaart": "appeltaart.jpg",
+    "fototaart": "fototaart.jpg", "soezen": "soezen.jpg", "toonbank": "toonbank.jpg"
+  },
+  "order": {
+    "slotMinutes": 30,
+    "lastSlotBeforeClose": 30,
+    "daysAhead": 14,
+    "closedDates": [],
+    "categories": [
+      {
+        "id": "brood",
+        "name": { "nl": "Brood", "fr": "Pains" },
+        "items": [
+          { "id": "wit-rond-groot", "name": { "nl": "Wit brood, rond", "fr": "Pain blanc, rond" }, "unit": "800 g", "price": 2.8 },
+          { "id": "wit-rond-klein", "name": { "nl": "Wit brood, rond, klein", "fr": "Pain blanc, rond, petit" }, "unit": "450 g", "price": 1.8 },
+          { "id": "wit-vierkant", "name": { "nl": "Wit brood, vierkant", "fr": "Pain blanc, carré" }, "unit": "800 g", "price": 2.8 },
+          { "id": "bruin", "name": { "nl": "Verbeterd bruin brood", "fr": "Pain gris amélioré" }, "unit": "800 g", "price": 2.8 },
+          { "id": "bruin-klein", "name": { "nl": "Verbeterd bruin brood, klein", "fr": "Pain gris amélioré, petit" }, "unit": "450 g", "price": 1.8 },
+          { "id": "pistoletbrood", "name": { "nl": "Pistoletbrood", "fr": "Pain pistolet" }, "unit": "600 g", "price": 2.8 },
+          { "id": "volkoren", "name": { "nl": "Volkorenbrood", "fr": "Pain complet" }, "unit": "700 g", "price": 3.2 },
+          { "id": "volkoren-klein", "name": { "nl": "Volkorenbrood, klein", "fr": "Pain complet, petit" }, "unit": "350 g", "price": 2.1 },
+          { "id": "linea", "name": { "nl": "Meergranenbrood Linea", "fr": "Pain multicéréales Linea" }, "unit": "650 g", "price": 3.2 },
+          { "id": "tien-granen", "name": { "nl": "10-granenbrood", "fr": "Pain 10 céréales" }, "unit": "570 g", "price": 3.2 },
+          { "id": "campus", "name": { "nl": "Brandnetelbrood Campus", "fr": "Pain aux orties Campus" }, "unit": "570 g", "price": 3.2 },
+          { "id": "waldkorn", "name": { "nl": "Waldkorn", "fr": "Waldkorn" }, "unit": "520 g", "price": 3.2 },
+          { "id": "waldkorn-klein", "name": { "nl": "Waldkorn, klein", "fr": "Waldkorn, petit" }, "unit": "320 g", "price": 2.1 },
+          { "id": "maya", "name": { "nl": "Mayabrood", "fr": "Pain Maya" }, "unit": "520 g", "price": 3.2 },
+          { "id": "spelt", "name": { "nl": "Speltbrood", "fr": "Pain d’épeautre" }, "unit": "380 g", "price": 3.1 },
+          { "id": "lowcarb", "name": { "nl": "Koolhydraatarm meergranenbrood", "fr": "Pain multicéréales pauvre en glucides" }, "unit": "350 g", "price": 3.1 },
+          { "id": "noten", "name": { "nl": "Notenbrood", "fr": "Pain aux noix" }, "unit": "400 g", "price": 3.3 },
+          { "id": "kramiek-groot", "name": { "nl": "Kramiek met rozijnen, groot", "fr": "Cramique aux raisins, grand" }, "price": 5.0 },
+          { "id": "kramiek-klein", "name": { "nl": "Kramiek met rozijnen, klein", "fr": "Cramique aux raisins, petit" }, "price": 3.0 },
+          { "id": "suikerbrood", "name": { "nl": "Suikerbrood", "fr": "Craquelin" }, "unit": "400 g", "price": 3.1 },
+          { "id": "baguette", "name": { "nl": "Baguette", "fr": "Baguette" }, "unit": "250 g", "price": 1.5 }
+        ]
+      },
+      {
+        "id": "koeken",
+        "name": { "nl": "Pistolets & koeken", "fr": "Pistolets & viennoiseries" },
+        "items": [
+          { "id": "pistolet", "name": { "nl": "Pistolet op steen gebakken", "fr": "Pistolet cuit sur la sole" }, "note": { "nl": "Onze specialiteit", "fr": "Notre spécialité" }, "price": 0.5 },
+          { "id": "pistolet-sesam", "name": { "nl": "Sesampistolet", "fr": "Pistolet au sésame" } },
+          { "id": "keizer", "name": { "nl": "Keizerbroodje", "fr": "Petit pain empereur" } },
+          { "id": "sandwich", "name": { "nl": "Sandwich", "fr": "Sandwich" } },
+          { "id": "croissant", "name": { "nl": "Botercroissant", "fr": "Croissant au beurre" } },
+          { "id": "chocoladekoek", "name": { "nl": "Boter-chocoladekoek", "fr": "Couque au chocolat" } },
+          { "id": "suisse", "name": { "nl": "Suisse met rozijnen", "fr": "Suisse aux raisins" } },
+          { "id": "cremekoek", "name": { "nl": "Cremekoek", "fr": "Couque à la crème" } },
+          { "id": "bommelkies", "name": { "nl": "Ronse Bommelkies", "fr": "Bommelkies de Renaix" }, "note": { "nl": "Origineel recept", "fr": "Recette originale" } }
+        ]
+      },
+      {
+        "id": "taarten",
+        "name": { "nl": "Taarten", "fr": "Tartes & gâteaux" },
+        "note": { "nl": "Minstens 2 dagen op voorhand", "fr": "Au moins 2 jours à l’avance" },
+        "items": [
+          { "id": "appeltaart", "name": { "nl": "Appeltaart", "fr": "Tarte aux pommes" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "rijsttaart", "name": { "nl": "Rijsttaart", "fr": "Tarte au riz" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "pruimentaart", "name": { "nl": "Pruimentaart", "fr": "Tarte aux prunes" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "flantaart", "name": { "nl": "Flan Breselienne", "fr": "Flan Bréselienne" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "maison", "name": { "nl": "Maisontaart met krieken", "fr": "Tarte maison aux griottes" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "paola", "name": { "nl": "Paola cake met appelen", "fr": "Cake Paola aux pommes" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "duo-choco", "name": { "nl": "DUO chocoladetaart", "fr": "Gâteau DUO chocolat" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "choco-deluxe", "name": { "nl": "Chocolade Deluxe", "fr": "Chocolat Deluxe" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "tonka", "name": { "nl": "Tonka, hazelnoot & bloedsinaasappel", "fr": "Tonka, noisette & orange sanguine" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "cuberdon", "name": { "nl": "Cuberdon & bosvruchten", "fr": "Cuberdon & fruits des bois" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "frambozen-bavarois", "name": { "nl": "Frambozenbavarois", "fr": "Bavarois framboise" }, "leadDays": 2, "sizes": [4, 6, 8, 10] },
+          { "id": "fototaart", "name": { "nl": "Fototaart met eigen foto", "fr": "Gâteau photo personnalisé" }, "note": { "nl": "Mail ons je foto na het bestellen", "fr": "Envoyez-nous votre photo par e-mail" }, "leadDays": 3, "sizes": [6, 8, 10, 12, 15, 20] }
+        ]
+      }
+    ]
+  }
+}

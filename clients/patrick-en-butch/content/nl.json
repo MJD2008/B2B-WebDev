@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "title": "Bakkerij Patrick & Butch – ambachtelijke bakker in Ronse",
+    "description": "Pistolets op de ovensteen gebakken, vers brood en taarten uit eigen bakkerij op de Kruisstraat in Ronse. Sinds 1978. Bestel online en haal af in de winkel."
+  },
+  "demoBanner": "Ontwerpvoorstel · nog niet de officiële website van Bakkerij Patrick & Butch",
+  "hero": {
+    "eyebrow": "Sinds 1978 op de Kruisstraat",
+    "title": "Pistolets op de ovensteen gebakken.",
+    "subtitle": "Vers brood, koeken en taarten uit onze eigen bakkerij in Ronse. Bestel online en je bestelling ligt klaar wanneer je ze komt halen.",
+    "cta": "Online bestellen",
+    "ctaHref": "order",
+    "points": [
+      "Alles zelf gebakken",
+      "Online bestellen, afhalen in de winkel",
+      "Betalen bij het afhalen"
+    ],
+    "photoAlt": "Patrick bolt het deeg met de hand op"
+  },
+  "services": {
+    "title": "Onze specialiteiten",
+    "intro": "Een greep uit wat elke ochtend uit onze oven komt. Het volledige aanbod vind je bij online bestellen.",
+    "items": [
+      {
+        "name": "Pistolet op steen",
+        "price": "€ 0,50",
+        "description": "Rechtstreeks op de ovensteen gebakken. Op zondag warm uit de oven om 7u10 en 8u10."
+      },
+      {
+        "name": "Ronse Bommelkies",
+        "description": "Een Ronsische specialiteit, in 1978 mee bedacht door Patrick. Nog altijd volgens het originele, geheime recept en in de originele wikkel."
+      },
+      {
+        "name": "Kramiek met rozijnen",
+        "price": "€ 3,00 – 5,00",
+        "description": "Luchtig en vol rozijnen, voor het zondagsontbijt."
+      },
+      {
+        "name": "Waldkorn & speltbrood",
+        "price": "vanaf € 2,10",
+        "description": "Of kies uit volkoren, 10-granen, brandnetel, Maya en notenbrood."
+      },
+      {
+        "name": "Taarten",
+        "description": "Van rijsttaart en Flan Breselienne tot Tonka met bloedsinaasappel. Bestel minstens twee dagen op voorhand."
+      },
+      {
+        "name": "Fototaart",
+        "description": "Jouw foto op een taart, eetbaar en in onze bakkerij gemaakt. Ideaal voor verjaardagen."
+      }
+    ],
+    "note": "Allergenen of een speciale vraag? Vraag het ons gerust in de winkel of via het formulier hieronder."
+  },
+  "about": {
+    "title": "Een familiebakkerij, al bijna 50 jaar",
+    "body": [
+      "In januari 1978 openden Patrick en Marijke hun bakkerij op de Kruisstraat. Patrick leerde het vak bij bakkerij De Bels en patisserie De Vuyst, en trok naar Frankrijk om de echte baguette te leren bakken.",
+      "Vandaag staat zoon Butch in de bakkerij. We werken nog zoals vroeger: de bloem wordt met de hand afgewogen, elk brood wordt met de hand opgebold en we gebruiken zo weinig mogelijk machines. Daarom smaakt ons brood zoals brood hoort te smaken."
+    ],
+    "facts": [
+      {
+        "value": "1978",
+        "label": "geopend op de Kruisstraat"
+      },
+      {
+        "value": "2",
+        "label": "generaties bakkers"
+      },
+      {
+        "value": "7u",
+        "label": "open, woensdag tot zondag"
+      }
+    ],
+    "photoAlt": "Het deeg wordt met de hand afgewogen op de oude weegschaal"
+  },
+  "feature": {
+    "eyebrow": "Ook in onze winkel",
+    "title": "Thee, gekozen door een theesommelier",
+    "body": "Butch is gediplomeerd theesommelier. Onder de naam mister-t vind je bij ons losse thee, vruchten- en kruideninfusies en alles om thee te zetten. Hij geeft ook workshops en high teas.",
+    "cta": "Naar de theewinkel",
+    "href": "https://mister-t.be"
+  },
+  "gallery": {
+    "title": "Uit de bakkerij",
+    "items": [
+      {
+        "src": "fruittaart",
+        "caption": "Fruittaart"
+      },
+      {
+        "src": "meringue",
+        "caption": "Citroen & aardbei meringue"
+      },
+      {
+        "src": "appeltaart",
+        "caption": "Appeltaart"
+      },
+      {
+        "src": "fototaart",
+        "caption": "Fototaart"
+      },
+      {
+        "src": "soezen",
+        "caption": "Roomsoezen"
+      },
+      {
+        "src": "toonbank",
+        "caption": "In de toonbank"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Langskomen",
+    "intro": "Je vindt ons op de Kruisstraat 50, in het centrum van Ronse. Voor bestellingen gebruik je best ons bestelformulier. Een andere vraag? Bel of stuur ons een bericht.",
+    "formTitle": "Vraag of bericht",
+    "hoursNote": "Op zondag warme pistolets om 7u10 en 8u10."
+  },
+  "order": {
+    "title": "Online bestellen",
+    "intro": "Kies wat je wil, kies wanneer je het komt halen en je bestelling ligt klaar. Je betaalt in de winkel."
+  }
+}

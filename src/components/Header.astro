@@ -1,5 +1,5 @@
 ---
-import { site, languages, href, telHref } from '../lib/site.js';
+import { site, languages, href, telHref, ORDER_PAGE } from '../lib/site.js';
 import { ui } from '../lib/ui.js';
 const { lang, page = '' } = Astro.props;
 const t = ui[lang];
@@ -27,7 +27,9 @@ const nav = [
           {languages.map(l => <a href={href(page, l)} aria-current={l === lang ? 'true' : undefined} lang={l}>{l.toUpperCase()}</a>)}
         </div>
       )}
-      <a class="btn btn-small" href={telHref(site.contact.phone)}>{site.contact.phone}</a>
+      {site.order
+        ? <a class="btn btn-small" href={href(ORDER_PAGE, lang)} aria-current={page === ORDER_PAGE ? 'page' : undefined}>{t.orderOnline}</a>
+        : <a class="btn btn-small" href={telHref(site.contact.phone)}>{site.contact.phone}</a>}
     </div>
   </div>
 </header>
