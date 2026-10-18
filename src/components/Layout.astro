@@ -1,5 +1,5 @@
 ---
-import { site, PREVIEW, languages, href } from '../lib/site.js';
+import { site, PREVIEW, languages, href, content } from '../lib/site.js';
 import { variants, fontUrl } from '../lib/variants.js';
 import { ui } from '../lib/ui.js';
 import '../styles/site.css';
@@ -26,7 +26,7 @@ const t = ui[lang];
   <style set:html={`:root{${vars}}`}></style>
 </head>
 <body>
-  {PREVIEW && <div class="demo-banner">{t.demoBanner}</div>}
+  {PREVIEW && <div class="demo-banner">{content(lang).demoBanner ?? t.demoBanner}</div>}
   <slot />
 </body>
 </html>

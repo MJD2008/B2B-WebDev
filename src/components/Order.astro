@@ -1,0 +1,324 @@
+---
+// Online pickup orders: the visitor picks products, a pickup day and time, and leaves contact details.
+// The order is mailed to the shop through Web3Forms; payment happens in the shop.
+// Without a Web3Forms key the form runs in demo mode and only shows the confirmation.
+import Layout from './Layout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { site, content, defaultLanguage, href, telHref, mapsLink, ORDER_PAGE } from '../lib/site.js';
+import { ui } from '../lib/ui.js';
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const c = content(lang);
+const o = site.order;
+const tr = (v, l = lang) => (v && typeof v === 'object' ? v[l] ?? v[defaultLanguage] : v);
+const money = (n) => n.toLocaleString(lang + '-BE', { style: 'currency', currency: 'EUR' });
+const contact = site.contact;
+
+// What the script needs: products (with the shop's own language name for the email), hours and texts.
+const products = o.categories.flatMap(cat => cat.items.map(i => ({
+  id: i.id, name: tr(i.name), shopName: tr(i.name, defaultLanguage), price: i.price ?? null,
+  leadDays: i.leadDays ?? 1, sizes: i.sizes ?? null,
+})));
+const config = {
+  lang, hours: site.hours, closedDates: o.closedDates ?? [], daysAhead: o.daysAhead ?? 14,
+  slotMinutes: o.slotMinutes ?? 30, lastSlotBeforeClose: o.lastSlotBeforeClose ?? 30,
+  demo: !site.forms?.web3formsKey,
+};
+const texts = {
+  total: t.total, priceInShop: t.priceInShop, persons: t.persons, remove: t.remove, items: t.items,
+  orderSentBody: t.orderSentBody, leadNote: t.leadNote, needItems: t.needItems, needSlot: t.needSlot,
+  sendError: t.sendError, today: t.today, tomorrow: t.tomorrow, cartEmpty: t.cartEmpty,
+};
+---
+<Layout lang={lang} title={`${c.order.title} – ${site.name}`} description={c.order.intro} page={ORDER_PAGE}>
+  <Header lang={lang} page={ORDER_PAGE} />
+  <main class="order-page" id="order" data-products={JSON.stringify(products)} data-config={JSON.stringify(config)} data-t={JSON.stringify(texts)}>
+    <section class="order-hero">
+      <div class="wrap">
+        <h1>{c.order.title}</h1>
+        <p class="lead">{c.order.intro}</p>
+        <nav class="cat-nav" aria-label={t.services}>
+          {o.categories.map(cat => <a href={`#cat-${cat.id}`}>{tr(cat.name)}</a>)}
+        </nav>
+      </div>
+    </section>
+
+    <div class="wrap order-layout">
+      <div class="catalog">
+        {o.categories.map(cat => (
+          <section class="cat" id={`cat-${cat.id}`}>
+            <div class="cat-head">
+              <h2>{tr(cat.name)}</h2>
+              {cat.note && <p class="cat-note">{tr(cat.note)}</p>}
+            </div>
+            <ul class="items">
+              {cat.items.map(i => (
+                <li class="item" data-id={i.id}>
+                  <div class="item-info">
+                    <span class="item-name">{tr(i.name)}</span>
+                    <span class="item-meta">
+                      {[i.unit, tr(i.note)].filter(Boolean).join(' · ')}
+                    </span>
+                  </div>
+                  <div class="item-buy">
+                    <span class={`item-price${i.price == null ? ' is-shop' : ''}`}>{i.price != null ? money(i.price) : t.priceInShop}</span>
+                    {i.sizes && (
+                      <select class="item-size" aria-label={`${t.size}: ${tr(i.name)}`}>
+                        {i.sizes.map(n => <option value={n}>{n} {t.persons}</option>)}
+                      </select>
+                    )}
+                    <div class="stepper">
+                      <button type="button" class="step-minus" aria-label={`${t.less}: ${tr(i.name)}`} disabled>−</button>
+                      <output class="step-qty" aria-live="polite">0</output>
+                      <button type="button" class="step-plus" aria-label={`${t.more}: ${tr(i.name)}`}>+</button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+      <aside class="checkout" id="checkout">
+        <form class="checkout-card" id="order-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <div class="checkout-step">
+            <h2>{t.yourOrder}</h2>
+            <ul class="cart"></ul>
+            <p class="cart-empty">{t.cartEmpty}</p>
+            <div class="cart-total" hidden><span>{t.total}</span><strong class="total-num"></strong></div>
+            <p class="note total-note" hidden>{t.totalNote}</p>
+          </div>
+
+          <fieldset class="checkout-step" aria-labelledby="o-when">
+            <h3 id="o-when">{t.pickupDay}</h3>
+            <div class="days" role="radiogroup" aria-labelledby="o-when"></div>
+            <p class="note lead-note" hidden></p>
+            <label for="o-time">{t.pickupTime}</label>
+            <select id="o-time" class="time" disabled></select>
+          </fieldset>
+
+          <fieldset class="checkout-step">
+            <legend class="sr-only">{t.contact}</legend>
+            <input type="hidden" name="access_key" value={site.forms?.web3formsKey ?? ''} />
+            <input type="hidden" name="subject" value="" />
+            <input type="hidden" name="from_name" value={`Website ${site.name}`} />
+            <input type="hidden" name="Afhalen" value="" />
+            <input type="hidden" name="Bestelling" value="" />
+            <input type="hidden" name="Totaal" value="" />
+            <input type="hidden" name="Taal" value={lang.toUpperCase()} />
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+            <label for="o-name">{t.name}</label>
+            <input id="o-name" name="name" required autocomplete="name" />
+            <div class="form-row">
+              <div><label for="o-phone">{t.phone}</label><input id="o-phone" name="phone" type="tel" required autocomplete="tel" /></div>
+              <div><label for="o-email">{t.email} <span class="opt">({t.optional})</span></label><input id="o-email" name="email" type="email" autocomplete="email" /></div>
+            </div>
+            <label for="o-remark">{t.remark} <span class="opt">({t.optional})</span></label>
+            <textarea id="o-remark" name="Opmerking" rows="2"></textarea>
+          </fieldset>
+
+          <button class="btn btn-block" type="submit">{t.placeOrder}</button>
+          <p class="note pay-note">{t.payInShop}</p>
+          <p class="form-status" role="alert"></p>
+        </form>
+
+        <div class="checkout-card order-done" hidden tabindex="-1">
+          <p class="done-mark" aria-hidden="true">✓</p>
+          <h2>{t.orderSent}</h2>
+          <p class="done-body"></p>
+          <ul class="cart done-cart"></ul>
+          <p class="note">{t.payInShop}</p>
+          {config.demo && <p class="note demo-note">{t.demoSent}</p>}
+          <p class="done-contact">{site.name} · {contact.address.street}, {contact.address.city} · <a href={telHref(contact.phone)}>{contact.phone}</a></p>
+          <button type="button" class="btn btn-ghost new-order">{t.newOrder}</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <Footer lang={lang} />
+
+  <div class="cart-bar" hidden>
+    <span class="cart-bar-sum"></span>
+    <a class="btn btn-small" href="#checkout">{t.toCheckout} →</a>
+  </div>
+  <nav class="action-bar order-actions" aria-label={t.contact}>
+    <a href={href('', lang)}>{site.name.split(' ')[0]}</a>
+    <a href={telHref(contact.phone)}>{t.call}</a>
+    <a href={mapsLink(contact)} target="_blank" rel="noopener">{t.route}</a>
+  </nav>
+
+  <script is:inline>
+  (function () {
+    var root = document.getElementById('order');
+    var products = JSON.parse(root.dataset.products), cfg = JSON.parse(root.dataset.config), t = JSON.parse(root.dataset.t);
+    var byId = {}; products.forEach(function (p) { byId[p.id] = p; });
+    var locale = cfg.lang + '-BE';
+    var money = function (n) { return n.toLocaleString(locale, { style: 'currency', currency: 'EUR' }); };
+    var cart = {}; // key "id" or "id|size" -> qty
+    var pickup = { date: null, time: null };
+
+    var form = document.getElementById('order-form');
+    var done = document.querySelector('.order-done');
+    var cartEl = form.querySelector('.cart'), emptyEl = form.querySelector('.cart-empty');
+    var totalBox = form.querySelector('.cart-total'), totalNum = form.querySelector('.total-num'), totalNote = form.querySelector('.total-note');
+    var daysEl = form.querySelector('.days'), timeEl = form.querySelector('.time'), leadNote = form.querySelector('.lead-note');
+    var status = form.querySelector('.form-status');
+    var bar = document.querySelector('.cart-bar'), barSum = bar.querySelector('.cart-bar-sum');
+
+    // ---- Dates, in Belgian time ----
+    function brusselsToday() {
+      var p = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+      return new Date(p + 'T00:00:00Z');
+    }
+    function iso(d) { return d.toISOString().slice(0, 10); }
+    function weekday(d) { return (d.getUTCDay() + 6) % 7; } // 0 = Monday, like site.hours
+    function fmtDay(d, opts) { return d.toLocaleDateString(locale, Object.assign({ timeZone: 'UTC' }, opts)); }
+    function longDay(d) { return fmtDay(d, { weekday: 'long', day: 'numeric', month: 'long' }); }
+    function isOpen(d) { return (cfg.hours[weekday(d)] || []).length > 0 && cfg.closedDates.indexOf(iso(d)) < 0; }
+    function toMin(s) { var a = s.split(':'); return +a[0] * 60 + +a[1]; }
+    function toHm(m) { return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0'); }
+
+    function leadDays() {
+      var n = 1;
+      Object.keys(cart).forEach(function (k) { n = Math.max(n, byId[k.split('|')[0]].leadDays); });
+      return n;
+    }
+
+    function renderDays() {
+      var today = brusselsToday(), lead = leadDays(), html = '', first = null;
+      for (var i = lead; i < lead + cfg.daysAhead; i++) {
+        var d = new Date(today.getTime() + i * 864e5);
+        if (!isOpen(d)) continue;
+        if (!first) first = d;
+        var label = i === 1 ? t.tomorrow : fmtDay(d, { weekday: 'short' });
+        html += '<button type="button" role="radio" class="day" data-date="' + iso(d) + '" aria-checked="' + (pickup.date === iso(d)) + '">'
+          + '<span>' + label + '</span><strong>' + fmtDay(d, { day: 'numeric' }) + '</strong><span>' + fmtDay(d, { month: 'short' }) + '</span></button>';
+      }
+      daysEl.innerHTML = html;
+      // A cake in the cart can push the earliest day past the chosen one.
+      if (pickup.date && !daysEl.querySelector('[data-date="' + pickup.date + '"]')) { pickup.date = null; pickup.time = null; }
+      if (lead > 1 && first) { leadNote.textContent = t.leadNote.replace('{date}', longDay(first)); leadNote.hidden = false; }
+      else leadNote.hidden = true;
+      renderTimes();
+    }
+
+    function renderTimes() {
+      if (!pickup.date) { timeEl.innerHTML = ''; timeEl.disabled = true; return; }
+      var d = new Date(pickup.date + 'T00:00:00Z'), opts = '';
+      (cfg.hours[weekday(d)] || []).forEach(function (r) {
+        for (var m = toMin(r[0]); m <= toMin(r[1]) - cfg.lastSlotBeforeClose; m += cfg.slotMinutes) {
+          var v = toHm(m);
+          opts += '<option value="' + v + '"' + (v === pickup.time ? ' selected' : '') + '>' + v + '</option>';
+        }
+      });
+      timeEl.innerHTML = opts; timeEl.disabled = false;
+      pickup.time = timeEl.value;
+    }
+
+    daysEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.day'); if (!b) return;
+      pickup.date = b.dataset.date;
+      daysEl.querySelectorAll('.day').forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); });
+      renderTimes(); status.textContent = '';
+    });
+    timeEl.addEventListener('change', function () { pickup.time = timeEl.value; });
+
+    // ---- Cart ----
+    function lineName(key, shop) {
+      var parts = key.split('|'), p = byId[parts[0]];
+      return (shop ? p.shopName : p.name) + (parts[1] ? ' (' + parts[1] + ' ' + t.persons + ')' : '');
+    }
+    function totals() {
+      var sum = 0, count = 0, unpriced = false;
+      Object.keys(cart).forEach(function (k) {
+        var p = byId[k.split('|')[0]]; count += cart[k];
+        if (p.price == null) unpriced = true; else sum += p.price * cart[k];
+      });
+      return { sum: sum, count: count, unpriced: unpriced };
+    }
+    function cartHtml(withRemove) {
+      return Object.keys(cart).map(function (k) {
+        var p = byId[k.split('|')[0]];
+        return '<li><span class="cart-qty">' + cart[k] + '×</span><span class="cart-name">' + lineName(k) + '</span>'
+          + '<span class="cart-price">' + (p.price != null ? money(p.price * cart[k]) : '') + '</span>'
+          + (withRemove ? '<button type="button" class="cart-remove" data-key="' + k + '" aria-label="' + t.remove + ': ' + lineName(k) + '">×</button>' : '') + '</li>';
+      }).join('');
+    }
+    function syncRow(row) {
+      var size = row.querySelector('.item-size'), key = row.dataset.id + (size ? '|' + size.value : '');
+      var q = cart[key] || 0;
+      row.querySelector('.step-qty').textContent = q;
+      row.querySelector('.step-minus').disabled = q === 0;
+      row.classList.toggle('in-cart', Object.keys(cart).some(function (k) { return k.split('|')[0] === row.dataset.id; }));
+    }
+    function render() {
+      var tot = totals();
+      cartEl.innerHTML = cartHtml(true);
+      emptyEl.hidden = tot.count > 0;
+      totalBox.hidden = tot.count === 0;
+      totalNum.textContent = money(tot.sum) + (tot.unpriced ? ' +' : '');
+      totalNote.hidden = !tot.unpriced;
+      bar.hidden = tot.count === 0;
+      barSum.textContent = tot.count + ' ' + t.items + ' · ' + money(tot.sum) + (tot.unpriced ? ' +' : '');
+      document.querySelectorAll('.item').forEach(syncRow);
+      renderDays();
+    }
+    function change(row, delta) {
+      var size = row.querySelector('.item-size'), key = row.dataset.id + (size ? '|' + size.value : '');
+      var q = Math.max(0, Math.min(99, (cart[key] || 0) + delta));
+      if (q) cart[key] = q; else delete cart[key];
+      status.textContent = '';
+      render();
+    }
+    document.querySelector('.catalog').addEventListener('click', function (e) {
+      var row = e.target.closest('.item'); if (!row) return;
+      if (e.target.closest('.step-plus')) change(row, 1);
+      if (e.target.closest('.step-minus')) change(row, -1);
+    });
+    document.querySelector('.catalog').addEventListener('change', function (e) {
+      if (e.target.classList.contains('item-size')) syncRow(e.target.closest('.item'));
+    });
+    cartEl.addEventListener('click', function (e) {
+      var b = e.target.closest('.cart-remove'); if (!b) return;
+      delete cart[b.dataset.key]; render();
+    });
+
+    // ---- Send ----
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var tot = totals();
+      if (!tot.count) { status.textContent = t.needItems; return; }
+      if (!pickup.date || !pickup.time) { status.textContent = t.needSlot; daysEl.scrollIntoView({ block: 'center' }); return; }
+      if (!form.reportValidity()) return;
+      var d = new Date(pickup.date + 'T00:00:00Z');
+      var shopDay = d.toLocaleDateString('nl-BE', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' });
+      form.elements.Afhalen.value = shopDay + ' om ' + pickup.time;
+      form.elements.Bestelling.value = Object.keys(cart).map(function (k) { return cart[k] + ' × ' + lineName(k, true); }).join('\n');
+      form.elements.Totaal.value = money(tot.sum) + (tot.unpriced ? ' + producten aan winkelprijs' : '');
+      form.elements.subject.value = 'Bestelling ' + form.elements.name.value + ' – afhalen ' + shopDay + ' ' + pickup.time;
+      var btn = form.querySelector('[type=submit]'); btn.disabled = true;
+      var ok = function () {
+        done.querySelector('.done-body').textContent = t.orderSentBody.replace('{date}', longDay(d)).replace('{time}', pickup.time);
+        done.querySelector('.done-cart').innerHTML = cartHtml(false);
+        form.hidden = true; done.hidden = false; bar.hidden = true; btn.disabled = false;
+        done.scrollIntoView({ block: 'start' }); done.focus({ preventScroll: true });
+      };
+      if (cfg.demo) { ok(); return; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (res) { if (res.success) ok(); else throw 0; })
+        .catch(function () { status.textContent = t.sendError; btn.disabled = false; });
+    });
+    done.querySelector('.new-order').addEventListener('click', function () {
+      cart = {}; pickup = { date: null, time: null }; form.reset();
+      done.hidden = true; form.hidden = false; status.textContent = ''; render();
+      window.scrollTo({ top: 0 });
+    });
+
+    render();
+  })();
+  </script>
+</Layout>

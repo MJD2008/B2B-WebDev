@@ -1,0 +1,9 @@
+---
+// Only built for clients with an "order" block in site.config.json.
+import Order from '../components/Order.astro';
+import { site, defaultLanguage, ORDER_PAGE } from '../lib/site.js';
+export function getStaticPaths() {
+  return site.order ? [{ params: { orderPage: ORDER_PAGE } }] : [];
+}
+---
+<Order lang={defaultLanguage} />
